@@ -1,0 +1,28 @@
+version: '3'
+services:
+  db:
+    image: mysql:5.7
+    container_name: romeria
+    environment:
+      MYSQL_ROOT_PASSWORD: pass
+      MYSQL_DATABASE: romeriadb
+      MYSQL_USER: root
+      MYSQL_PASSWORD: pass
+    ports:
+      - '6033'
+    volumes:
+      - dbdata:/var/lib/mysql
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: pma_romeria
+    links:
+      - romeria
+    environment:
+      PMA_HOST: romeria
+      PMA_PORT: 
+      PMA_ARBITRARY: 1
+    restart: always
+    ports:
+      - 8080:80
+volumes:
+  dbdata:

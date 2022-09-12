@@ -1,0 +1,549 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Dependencias {
+  idDependencia     Int                       @id @default(autoincrement())
+  nombreDependencia String
+  usuarios          Usuarios[]
+  formsalud         Formsalud[]
+  formdif           Formdif[]
+  formspublica      Formseguridadpublica[]
+  forminspeccionvig Forminspeccionvig[]
+  formtianguis      Formtianguis[]
+  formrecaudadora   Formrecaudadora[]
+  formalumbrado     Formalumbrado[]
+  formapublico      Formaseopublico[]
+  formadrenaje      Formaguadrenaje[]
+  formaestrategico  Formanalisisestrategico[]
+  formsindicatura   Formsindicatura[]
+  formmurbano       Formmejoramientourbano[]
+  formconservacio   Formconservacion[]
+  forminnovacion    Forminnovacion[]
+  formpcivil        Formpcivil[]
+  formconstruccion  Formconstruccion[]
+}
+
+//Un rol tiene muchos usuarios
+model Roles {
+  idRol    Int        @id @default(autoincrement())
+  tipoRol  String
+  usuarios Usuarios[]
+}
+
+//Un usuario tiene un rol
+model Usuarios {
+  idUsuarios         Int                       @id @default(autoincrement())
+  visible            Boolean                   @default(true)
+  nombre             String
+  apellido           String
+  telefono           String
+  correo             String                    @unique
+  contrasena         String
+  noEmpleado         Int
+  creadoEn           DateTime                  @default(now()) @db.Timestamp(0)
+  rolUsuario         Int
+  tipodependencia    Int
+  token              String?
+  rol                Roles                     @relation(fields: [rolUsuario], references: [idRol])
+  dependenciaUsuario Dependencias              @relation(fields: [tipodependencia], references: [idDependencia])
+  formsaluds         Formsalud[]
+  formdifs           Formdif[]
+  formspublicas      Formseguridadpublica[]
+  forminspeccionvigs Forminspeccionvig[]
+  formtianguiss      Formtianguis[]
+  formrecaudadoras   Formrecaudadora[]
+  formalumbrados     Formalumbrado[]
+  formapublicos      Formaseopublico[]
+  formadrenajes      Formaguadrenaje[]
+  formaestrategicos  Formanalisisestrategico[]
+  formsindicaturas   Formsindicatura[]
+  formmurbanos       Formmejoramientourbano[]
+  formconservacios   Formconservacion[]
+  forminnovacions    Forminnovacion[]
+  formpcivils        Formpcivil[]
+  formconstruccions  Formconstruccion[]
+}
+
+model Formsalud {
+  idPreguntasSalud           Int          @id @default(autoincrement())
+  creadoEn                   DateTime     @default(now()) @db.Timestamp(0)
+  cantidadDeshidratacion     Int
+  msjDeshidratacion          String
+  cantidadHipertension       Int
+  msjHipertension            String
+  cantidadInfartoMiocardio   Int
+  msjInfartoMiocardio        String
+  cantidadConvulsivos        Int
+  msjConvulsivos             String
+  cantidadEnfRespiratoria    Int
+  msjEnfRespiratoria         String
+  cantidadEnfGatrointestinal Int
+  msjEnfGatrointestinal      String
+  cantidadFebrilesExa        Int
+  msjFebrilesExa             String
+  cantidadCefaleas           Int
+  msjCefaleas                String
+  cantidadDiabetico          Int
+  msjDiabetico               String
+  cantidadIntoxicacion       Int
+  msjIntoxicacion            String
+  cantidadCaidas             Int
+  msjCaidas                  String
+  cantidadQuemaduras         Int
+  msjQuemaduras              String
+  cantidadAtropellado        Int
+  msjAtropellado             String
+  cantidadChoque             Int
+  msjChoque                  String
+  cantidadVolcadura          Int
+  msjVolcadura               String
+  cantidadMuscoloesqueletico Int
+  msjMuscoloesqueletico      String
+  cantidadArmablanca         Int
+  msjArmablanca              String
+  cantidadArmadefuego        Int
+  msjArmadefuego             String
+  cantidadOtros              Int
+  msjOtros                   String
+  cantidaPediatrico          Int
+  msjPediatrico              String
+  cantidadAdultos            Int
+  msjAdultos                 String
+  cantidadAdultoMayor        Int
+  msjAdultoMayor             String
+  cantidadFemenino           Int
+  msjFemenino                String
+  cantidadMasculino          Int
+  msjMasculino               String
+  cantidadIntermedio         Int
+  msjIntermedio              String
+  cantidadTransladados       Int
+  msjTransladados            String
+  oKPunto1                   String
+  msjPunto1                  String
+  oKPunto2                   String
+  msjPunto2                  String
+  oKPunto3                   String
+  msjPunto3                  String
+  oKPunto4                   String
+  msjPunto4                  String
+  oKPunto5                   String
+  msjPunto5                  String
+  oKPunto6                   String
+  msjPunto6                  String
+  tipodependenciasalud       Int
+  usuariorespondio           Int
+  dependenciaSalud           Dependencias @relation(fields: [tipodependenciasalud], references: [idDependencia])
+  usuariosRespond            Usuarios     @relation(fields: [usuariorespondio], references: [idUsuarios])
+}
+
+model Formdif {
+  idPreguntasDif                          Int          @id @default(autoincrement())
+  creadoEn                                DateTime     @default(now()) @db.Timestamp(0)
+  cantidadMenores18                       Int
+  msjMenores18                            String
+  cantidadAdultos18a59                    Int
+  msjAdultos18a59                         String
+  cantidadAdultosMay60                    Int
+  msjAdultosMay60                         String
+  cantidadAdDiscapacitados                Int
+  msjAdDiscapacitados                     String
+  conceptoInstModPresiMun                 String
+  msjInstModPresiMun                      String
+  conceptoInstModAvilaLaureles            String
+  msjInstModAvilaLaureles                 String
+  conceptoInstModPerExtravAmericaEsparta  String
+  msjInstModPerExtravAmericaEsparta       String
+  conceptoInstModPerExtravAmericaObelisco String
+  msjInstModPerExtravAmericaObelisco      String
+  tipodependenciadif                      Int
+  usuariorespondiodif                     Int
+  dependenciaDif                          Dependencias @relation(fields: [tipodependenciadif], references: [idDependencia])
+  usuariosrespondDif                      Usuarios     @relation(fields: [usuariorespondiodif], references: [idUsuarios])
+}
+
+model Formseguridadpublica {
+  idPreguntasSPublica                Int          @id @default(autoincrement())
+  creadoEn                           DateTime     @default(now()) @db.Timestamp(0)
+  cantidadAdultosEnervantes          Int
+  cantidadMenoresEnervantes          Int
+  msjEnervantes                      String
+  cantidadAdultosArmaFuego           Int
+  cantidadMenoresArmaFuego           Int
+  msjArmaFuego                       String
+  cantidadAdultosBebidasEmbriagantes Int
+  cantidadMenoresBebidasEmbriagantes Int
+  msjBebidasEmbriagantes             String
+  cantidadMenoresAlterarOrden        Int
+  cantidadAdultosAlterarOrden        Int
+  msjAlterarOrden                    String
+  cantidadMenoresFaltaAdmin          Int
+  cantidadAdultosFaltaAdmin          Int
+  msjFaltaAdmin                      String
+  cantidadAdultosOtroServicio        Int
+  cantidadMenoresOtroServicio        Int
+  msjOtroServicio                    String
+  tipodependenciasegpublica          Int
+  usuariorespondioPublica            Int
+  dependenciaSpublica                Dependencias @relation(fields: [tipodependenciasegpublica], references: [idDependencia])
+  usuariosRespondPublica             Usuarios     @relation(fields: [usuariorespondioPublica], references: [idUsuarios])
+}
+
+model Forminspeccionvig {
+  idInspeccionVig                  Int          @id @default(autoincrement())
+  creadoEn                         DateTime     @default(now()) @db.Timestamp(0)
+  cantidadActasConDecomisoZona     Int
+  cantidadActasConDecomisoRutaEvac Int
+  msjActasDecomiso                 String
+  cantidadActasComercioEstab       Int
+  msjActasComercioEstab            String
+  cantidadClausurasComEstablecido  Int
+  msjClausurasComEstablecido       String
+  cantidadClausuraLeySeca          Int
+  msjClausuraLeySeca               String
+  cantidadClausurasJMecanicos      Int
+  msjClausurasJMecanicos           String
+  cantidadClausuraInfraccDiversas  Int
+  msjClausuraInfraccDiversas       String
+  tipodependenciainspeccion        Int
+  usuariorespondioVig              Int
+  usuariosRespondVig               Usuarios     @relation(fields: [usuariorespondioVig], references: [idUsuarios])
+  dependenciaInspeccion            Dependencias @relation(fields: [tipodependenciainspeccion], references: [idDependencia])
+}
+
+model Formtianguis {
+  idTianguis               Int          @id @default(autoincrement())
+  creadoEn                 DateTime     @default(now()) @db.Timestamp(0)
+  cantidadComerciantesInst Int
+  msjComerciantesInst      String
+  cantidadComercio         Int
+  msjComercio              String
+  cantidadJuegos           Int
+  msjJuegos                String
+  callesZona1              String
+  callesZona2              String
+  callesZona3              String
+  callesZona4              String
+  zonaAmortiguamiento      String
+  tipodependenciatianguis  Int
+  usuariorespondioTia      Int
+  usuariosRespondTia       Usuarios     @relation(fields: [usuariorespondioTia], references: [idUsuarios])
+  dependenciaTianguis      Dependencias @relation(fields: [tipodependenciatianguis], references: [idDependencia])
+}
+
+model Formrecaudadora {
+  idRecaudadora            Int          @id @default(autoincrement())
+  creadoEn                 DateTime     @default(now()) @db.Timestamp(0)
+  cantidadRecaudado        Int
+  msjMontoRecaudado        String
+  CobroZona1               String
+  msjCobroZona1            String
+  CobroZona2               String
+  msjCobroZona2            String
+  CobroZona3               String
+  msjCobroZona3            String
+  CobroZona4JMecanicos     String
+  msjCobroZona4JMecanicos  String
+  CobroZonaAmortiguamiento String
+  msjZonaAmortiguamiento   String
+  tipodependenciareca      Int
+  usuariorespondioReca     Int
+  usuariosRespondReca      Usuarios     @relation(fields: [usuariorespondioReca], references: [idUsuarios])
+  dependenciaRecaudadora   Dependencias @relation(fields: [tipodependenciareca], references: [idDependencia])
+}
+
+model Formalumbrado {
+  idAlumbrado                           Int          @id @default(autoincrement())
+  creadoEn                              DateTime     @default(now()) @db.Timestamp(0)
+  cantidadRevisionRealizadaComerciantes Int
+  msjRevisionRealizadaComerciantes      String
+  cantidadModConectados                 Int
+  msjModConectados                      String
+  tipodependenciaslumbrado              Int
+  usuariorespondioAlum                  Int
+  usuariosRespondAlum                   Usuarios     @relation(fields: [usuariorespondioAlum], references: [idUsuarios])
+  dependenciaAlumbrado                  Dependencias @relation(fields: [tipodependenciaslumbrado], references: [idDependencia])
+}
+
+model Formaseopublico {
+  idAPublico                              Int          @id @default(autoincrement())
+  creadoEn                                DateTime     @default(now()) @db.Timestamp(0)
+  cantidadToneladasRecibidasPicachos      Int
+  msjToneladasRecibidasPicachos           String
+  cantidadToneladasOperativoBarridoManual Int
+  msjToneladasOperativoBarridoManual      String
+  ContenedorAmericaEsparta                String
+  msjContenedorAmericaEsparta             String
+  ContenedorAurelioJuanpabloii            String
+  msjContenedorAurelioJuanpabloii         String
+  SarcofagoLaureles                       String
+  msjSarcofagoLaureles                    String
+  HidalgoECarranza                        String
+  msjHidalgoECarranza                     String
+  VillaFantasia                           String
+  msjVillaFantasia                        String
+  LaurelesIndustria                       String
+  msjLaurelesIndustria                    String
+  PlazaPatria                             String
+  msjPlazaPatria                          String
+  PetAmericasRomanos                      String
+  msjPetAmericasRomanos                   String
+  PetPetAmericasMixton                    String
+  msjPetAmericasMixton                    String
+  PetLaurelesHidalgo                      String
+  msjPetLaurelesHidalgo                   String
+  tipodependenciaaseopub                  Int
+  usuariorespondioAseo                    Int
+  usuariosRespondAseo                     Usuarios     @relation(fields: [usuariorespondioAseo], references: [idUsuarios])
+  dependenciaAPublico                     Dependencias @relation(fields: [tipodependenciaaseopub], references: [idDependencia])
+}
+
+model Formaguadrenaje {
+  idADrenaje                                   Int          @id @default(autoincrement())
+  creadoEn                                     DateTime     @default(now()) @db.Timestamp(0)
+  cantidadBanosInstalados                      Int
+  msjBanosInstalados                           String
+  cantidadUsuarios                             Int
+  msjUsuarios                                  String
+  P1JMinaMatamoros                             String
+  cantidadEstimadaP1JMinaMatamoros             Int
+  P2EvaSofia                                   String
+  cantidadEstimadaP2EvaSofia                   Int
+  P3CincoMayoSofia                             String
+  cantidadEstimadaP3CincoMayoSofia             Int
+  P4MixtonAmericas                             String
+  cantidadEstimadaP4MixtonAmericas             Int
+  P5AmericasEsparta                            String
+  cantidadEstimadaP5AmericasEsparta            Int
+  P6AmericasPatria                             String
+  cantidadEstimadaP6AmericasPatria             Int
+  P7AvilaSantaElena                            String
+  cantidadEstimadaP7AvilaSantaElena            Int
+  P8AvilaPatria                                String
+  cantidadEstimadaP8AvilaPatria                Int
+  P9HidalgoLauralesJPabloii                    String
+  cantidadEstimadaP9HidalgoLauralesJPabloii    Int
+  P10EmilioLaureles                            String
+  cantidadEstimadaP10EmilioLaureles            Int
+  P11SarcofagoLaurelesJPabloii                 String
+  cantidadEstimadaP11SarcofagoLaurelesJPabloii Int
+  tipodependenciaaguadrenaje                   Int
+  usuariorespondioDren                         Int
+  usuariosRespondDren                          Usuarios     @relation(fields: [usuariorespondioDren], references: [idUsuarios])
+  dependenciaADrenaje                          Dependencias @relation(fields: [tipodependenciaaguadrenaje], references: [idDependencia])
+}
+
+model Formanalisisestrategico {
+  idAEstrategico                 Int          @id @default(autoincrement())
+  creadoEn                       DateTime     @default(now()) @db.Timestamp(0)
+  cantidadMediosComuAendidos     Int
+  msjMediosComuAendidos          String
+  cantidadMediosCobertura        Int
+  msjMediosCobertura             String
+  cantidadAtencionLogistica      Int
+  msjAtencionLogistica           String
+  SalaPrensaS                    String
+  msjSalaPrensa                  String
+  CierreSalaPrensa               String
+  msjCierreSalaPrensa            String
+  InstalacionMediosPAmericas     String
+  msjInstalacionMediosPAmericas  String
+  InstalacionMediosUBasilica     String
+  msjInstalacionMediosUBasilica  String
+  InstalacionMediosEvaBriseno    String
+  msjInstalacionMediosEvaBriseno String
+  CorteInfo11Oct                 String
+  msjCorteInfo11Oct              String
+  CorteInfo12Oct                 String
+  msjCorteInfo12Oct              String
+  RuedaPMat12oct                 String
+  msjRuedaPMat12oct              String
+  RuedaPFin12oct                 String
+  msjRuedaPFin12oct              String
+  InstaComedorReporteros         String
+  msjInstaComedorReporteros      String
+  tipodependenciaanaestrategico  Int
+  usuariorespondioAna            Int
+  usuariosRespondAna             Usuarios     @relation(fields: [usuariorespondioAna], references: [idUsuarios])
+  dependenciaAEstrategico        Dependencias @relation(fields: [tipodependenciaanaestrategico], references: [idDependencia])
+}
+
+model Formsindicatura {
+  idSindicatura              Int          @id @default(autoincrement())
+  creadoEn                   DateTime     @default(now()) @db.Timestamp(0)
+  cantidadActasCalificadas   Int
+  msjActasCalificadas        String
+  tipodependenciasindicatura Int
+  usuariorespondioSind       Int
+  usuariosRespondSind        Usuarios     @relation(fields: [usuariorespondioSind], references: [idUsuarios])
+  dependenciaSindicatura     Dependencias @relation(fields: [tipodependenciasindicatura], references: [idDependencia])
+}
+
+model Formmejoramientourbano {
+  idMUrbano                                 Int          @id @default(autoincrement())
+  creadoEn                                  DateTime     @default(now()) @db.Timestamp(0)
+  cantidadToneladasBasuraReco               Int
+  msjToneladasBasuraReco                    String
+  cantidadOperativoMejBarridoManualMecanico Int
+  msjOperativoMejBarridoManualMecanico      String
+  LimpiezaAmericasDia12                     String
+  msjLimpiezaAmericasDia12                  String
+  LimpiezaAvilaCamDia12                     String
+  msjLimpiezaAvilaCamDia12                  String
+  LimpiezaLaurelesDia12                     String
+  msjLimpiezaLaurelesDia12                  String
+  LimpiezaPatriaDia12                       String
+  msjLimpiezaPatriaDia12                    String
+  LimpiezaAurelioOrtegaDia12                String
+  msjLimpiezaAurelioOrtegaDia12             String
+  tipodependenciamejoramiento               Int
+  usuariorespondioMej                       Int
+  usuariosRespondMej                        Usuarios     @relation(fields: [usuariorespondioMej], references: [idUsuarios])
+  dependenciaMUrbano                        Dependencias @relation(fields: [tipodependenciamejoramiento], references: [idDependencia])
+}
+
+model Formconservacion {
+  idConservacion                 Int          @id @default(autoincrement())
+  creadoEn                       DateTime     @default(now()) @db.Timestamp(0)
+  cantidadAtencionUnidadBasilica Int
+  msjAtencionUnidadBasilica      String
+  cantidadAtencionPresidenciaMun Int
+  msjAtencionPresidenciaMun      String
+  cantidadAtencionCOZ            Int
+  msjAtencionCOZ                 String
+  ApoyoDanzantes                 String
+  msjApoyoDanzantes              String
+  tipodependenciaconservacion    Int
+  usuariorespondioConserv        Int
+  usuariosRespondConserv         Usuarios     @relation(fields: [usuariorespondioConserv], references: [idUsuarios])
+  dependenciaConservacion        Dependencias @relation(fields: [tipodependenciaconservacion], references: [idDependencia])
+}
+
+model Forminnovacion {
+  idInnovacion                    Int          @id @default(autoincrement())
+  creadoEn                        DateTime     @default(now()) @db.Timestamp(0)
+  cantidadServiciosRealizados     Int
+  msjServiciosRealizados          String
+  cantidadAtencionRepoCentroMando Int
+  msjAtencionRepoCentroMando      String
+  cantidadAtencionRepoSalaPrensa  Int
+  msjAtencionRepoSalaPrensa       String
+  cantidadAtencionCentOperaciones Int
+  msjAtencionCentOperaciones      String
+  HabCentroMandoGnrl              String
+  msjHabCentroMandoGnrl           String
+  HabSalaPrensa                   String
+  msjHabSalaPrensa                String
+  HabCentroOpZpn                  String
+  msjHabCentroOpZpn               String
+  tipodependenciainnovacion       Int
+  usuariorespondioInnov           Int
+  usuariosRespondInnov            Usuarios     @relation(fields: [usuariorespondioInnov], references: [idUsuarios])
+  dependenciaInnovacion           Dependencias @relation(fields: [tipodependenciainnovacion], references: [idDependencia])
+}
+
+model Formpcivil {
+  idPCivil                       Int          @id @default(autoincrement())
+  creadoEn                       DateTime     @default(now()) @db.Timestamp(0)
+  cantidadComSiCumplioNormas     Int
+  msjComSiCumplioNormas          String
+  cantidadComNoCumplioNormas     Int
+  msjComNoCumplioNormas          String
+  cantidadDeteccionClausuraGasLp Int
+  msjDeteccionClausuraGasLp      String
+  cantidadComerInspecc           Int
+  msjComerInspecc                String
+  cantidadPersonasAtendModu      Int
+  msjPersonasAtendModu           String
+  cantidadServIntinRealizados    Int
+  msjServIntinRealizados         String
+  Mod1PlzCaudillos               String
+  msjMod1PlzCaudillos            String
+  Mod2AndadorNovAmericas         String
+  msjMod2AndadorNovAmericas      String
+  Mod3AmericasMixton             String
+  msjMod3AmericasMixton          String
+  Mod4AmericasRomanos            String
+  msjMod4AmericasRomanos         String
+  Mod5AmericasPatria             String
+  msjMod5AmericasPatria          String
+  Mod66AvilaObelisco             String
+  msjMod66AvilaObelisco          String
+  Mod7AvilaJacarandas            String
+  msjMod7AvilaJacarandas         String
+  MotobombaHidalgoZapata         String
+  msjMotobombaHidalgoZapata      String
+  PipaAguaCamachoPatria          String
+  msjPipaAguaCamachoPatria       String
+  PipaAguaLaurelesJManuel        String
+  msjPipaAguaLaurelesJManuel     String
+  InstModGrpUSAR                 String
+  msjInstModGrpUSAR              String
+  tipodependenciapcivil          Int
+  usuariorespondioPcivil         Int
+  usuariosRespondPcivil          Usuarios     @relation(fields: [usuariorespondioPcivil], references: [idUsuarios])
+  dependenciaCivil               Dependencias @relation(fields: [tipodependenciapcivil], references: [idDependencia])
+}
+
+model Formconstruccion {
+  idConstruccion                  Int          @id @default(autoincrement())
+  creadoEn                        DateTime     @default(now()) @db.Timestamp(0)
+  concepto1                       String
+  inicioOperac                    DateTime
+  cierreOperac                    DateTime
+  concepto2                       String
+  horaIniConto2                   DateTime
+  horaFinConto2                   DateTime
+  concepto3                       String
+  horarioCierre                   DateTime
+  horarioApertura                 DateTime
+  concepto4                       String
+  horaInstalacionVallas           DateTime
+  cantidadVallasIns               Int
+  concepto5                       String
+  horaInstalacionSiilleria        DateTime
+  horaDesinstalacionSiilleria     DateTime
+  concepto6                       String
+  horaInstalacionAmericasObelisco DateTime
+  cantidadAguaAmericasObelisco    Int
+  concepto7                       String
+  horaArriboPCuartel              DateTime
+  msjConto7                       String
+  concepto8                       String
+  horaArriboSCuartel              DateTime
+  msjConto8                       String
+  concepto9                       String
+  horaArriboTCuartel              DateTime
+  msjConto9                       String
+  concepto10                      String
+  horaArriboImagenAmePatria       DateTime
+  msjConto10                      String
+  concepto11                      String
+  horaArriboImagenBasilica        DateTime
+  msjConto11                      String
+  concepto12                      String
+  horaIniEucaristica              DateTime
+  msjConto12                      String
+  concepto13                      String
+  horaFinEucaristica              DateTime
+  msjConto13                      String
+  concepto14                      String
+  horaInstalacionAguaAmericas     DateTime
+  cantidadConto14                 Int
+  concepto15                      String
+  horaInstalacionAguaHidalgo      DateTime
+  cantidadConto15                 Int
+  tipodependenciaconstruccion     Int
+  usuariorespondioconstr          Int
+  dependenciaConstru              Dependencias @relation(fields: [tipodependenciaconstruccion], references: [idDependencia])
+  usuariosrespondconstr           Usuarios     @relation(fields: [usuariorespondioconstr], references: [idUsuarios])
+}

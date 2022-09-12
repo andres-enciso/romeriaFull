@@ -1,0 +1,625 @@
+@font-face {
+  font-family: nutmeg;
+  src: url(Nutmeg-Thin.ttf);
+}
+
+@font-face {
+  font-family: nutmegBolds;
+  src: url(Nutmeg-Book.ttf);
+}
+
+@font-face {
+  font-family: nutmegBoldsd;
+  src: url(Nutmeg-Bold.ttf);
+}
+
+tbody,
+td,
+tfoot,
+th,
+thead,
+tr {
+  border-color: inherit;
+  border-style: solid;
+  border-width: 2px;
+  vertical-align: revert !important;
+}
+
+/* HEADER */
+.header-style {
+  background: #ffffff 0% 0% no-repeat padding-box;
+  box-shadow: 0px 3px 21px #00000010;
+}
+
+.logo-jaliscoDefiende {
+  border-right: solid 2px #80808069;
+}
+
+.posicion-logozapopan {
+  float: right;
+  width: 50%;
+}
+
+.posicion-zapopan {
+  width: 10%;
+  margin-left: 20px;
+}
+
+.color-texto {
+  color: #37aefd;
+  font-size: 16px;
+  font-weight: bold;
+  display: inline-flex;
+  padding-top: 15px;
+  text-decoration: none;
+}
+
+.color-texto:hover {
+  color: #0e517e;
+  font-size: 16px;
+  font-weight: bold;
+  display: inline-flex;
+  padding-top: 15px;
+  text-decoration: none;
+}
+
+.calcu {
+  float: right;
+  color: #37aefd;
+  font-size: 16px;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.info-ico {
+  width: 16px;
+  height: 19px;
+  margin: 2px;
+  padding-bottom: 2px;
+}
+
+.background-upband {
+  background: linear-gradient(80deg, #7e7d81 30%, #687181, #4c6072) !important;
+}
+
+.logoDash {
+  width: 180px;
+}
+
+/*footer*/
+.footer-position {
+  left: 0px;
+  position: absolute;
+  bottom: 0 !important;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+  -moz-box-align: center;
+  align-items: center;
+  width: 100%;
+  background-color: rgb(250, 250, 250);
+}
+
+.container-footer {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+}
+
+.size-image {
+  width: 152px;
+  height: 63px;
+}
+
+.size-row {
+  margin: 5vh;
+}
+
+/*MY ACCOUNT*/
+.content {
+  text-align: center;
+  border-radius: 10px;
+  background-color: white;
+}
+
+.table-style {
+  background-color: white;
+  border-radius: 15px;
+}
+
+.texto-table {
+  padding-top: 3% !important;
+}
+
+/*HOME*/
+.padding-aling2 {
+  padding-left: 5vh;
+}
+
+.size-purple {
+  font-size: 20px;
+  transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  box-shadow: none;
+  background-image: none;
+  border-radius: 12px;
+  border: medium none rgba(144, 202, 249, 0.46);
+  background-color: #5e35b1;
+  color: rgb(255, 255, 255);
+  overflow: hidden;
+  position: relative;
+  margin-bottom: 15px;
+  border: 1px solid #c9c9c9;
+  box-shadow: 8px 6px 4px #bdbdbd;
+  height: 150%;
+}
+
+.circle-purple-under {
+  content: "";
+  position: absolute;
+  width: 210px;
+  height: 210px;
+  background: rgb(69, 39, 160) none repeat scroll 0% 0%;
+  border-radius: 50%;
+  top: -125px;
+  right: -15px;
+  opacity: 0.5;
+}
+
+.circle-purple-up {
+  content: "";
+  position: absolute;
+  width: 210px;
+  height: 210px;
+  background: #4527a0 none repeat scroll 0% 0%;
+  border-radius: 50%;
+  top: -85px;
+  right: -95px;
+}
+
+.size-blue {
+  font-size: 20px;
+  transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  box-shadow: none;
+  background-image: none;
+  border-radius: 12px;
+  border: medium none rgba(144, 202, 249, 0.46);
+  background-color: #1e88e5;
+  color: rgb(255, 255, 255);
+  overflow: hidden;
+  position: relative;
+  margin-bottom: 15px;
+  border: 1px solid #c9c9c9;
+  box-shadow: 8px 6px 4px #bdbdbd;
+  height: 150%;
+}
+
+.circle-blue-under {
+  content: "";
+  position: absolute;
+  width: 210px;
+  height: 210px;
+  background: #1976d3 none repeat scroll 0% 0%;
+  border-radius: 50%;
+  top: -125px;
+  right: -15px;
+  opacity: 0.5;
+}
+
+.circle-blue-up {
+  content: "";
+  position: absolute;
+  width: 210px;
+  height: 210px;
+  background: #1565c0 none repeat scroll 0% 0%;
+  border-radius: 50%;
+  top: -85px;
+  right: -95px;
+}
+
+.padd {
+  padding-top: 25px;
+  position: relative;
+  padding-left: 5px;
+}
+
+.card-padd {
+  padding-top: 15vh;
+}
+
+.mediaquery {
+  padding-top: 9px;
+}
+
+@media (max-width: 770px) {
+  .mediaquery {
+    position: fixed;
+    padding-top: 10%;
+    padding-left: 8%;
+  }
+}
+
+.padding-aling11 {
+  font-size: 40px;
+}
+
+/*USUARIOS*/
+.css-de9k3v-MuiDataGrid-selectedRowCount {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 0px 16px;
+  visibility: hidden;
+  width: 0;
+  height: 0;
+  color: #f5f5f5;
+}
+
+.title-users {
+  font-size: 30px;
+  font-weight: 700;
+  margin-top: 4px;
+}
+
+.add-users {
+  margin-top: 1vh;
+  margin-bottom: 1vh;
+  text-align-last: right;
+}
+
+.header-users {
+  background-color: #000000;
+  color: white;
+  border-radius: 10px;
+  margin-bottom: 15px;
+}
+
+.size-modal {
+  width: 40% !important;
+}
+
+@media (max-width: 600px) {
+  .add-users {
+    text-align-last: center;
+    margin-bottom: 1vh;
+  }
+
+  .title-users {
+    font-size: 30px;
+    font-weight: 700;
+    text-align-last: center;
+  }
+
+  .size-modal {
+    width: 95% !important;
+  }
+}
+
+.icon-center {
+  margin-left: 8px;
+}
+
+/*CONSULTAS*/
+.MuiAutocomplete-hasPopupIcon.MuiAutocomplete-hasClearIcon.css-l9dg0c-MuiAutocomplete-root .MuiOutlinedInput-root {
+  padding-right: 65px;
+  color: white;
+  text-align-last: left;
+}
+
+.css-l9dg0c-MuiAutocomplete-root {
+  width: 300px;
+}
+
+@media (max-width: 438px) {
+  .css-l9dg0c-MuiAutocomplete-root {
+    width: 200px !important;
+  }
+}
+
+@media (max-width: 280px) {
+  .css-l9dg0c-MuiAutocomplete-root {
+    width: 145px !important;
+  }
+}
+
+.read-forms {
+  margin-top: 1vh;
+  margin-bottom: 1vh;
+  text-align: -webkit-right;
+}
+
+.title-form {
+  font-size: 30px;
+  font-weight: 700;
+  margin-top: 12px;
+}
+
+.swal2-container {
+  display: grid;
+  position: fixed;
+  z-index: 1060;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0 !important;
+  box-sizing: border-box;
+  grid-template-areas:
+    "top-start top top-end"
+    "center-start center center-end"
+    "bottom-start bottom-center bottom-end";
+  grid-template-rows: minmax(-webkit-min-content, auto) minmax(-webkit-min-content, auto) minmax(-webkit-min-content, auto);
+  grid-template-rows: minmax(min-content, auto) minmax(min-content, auto) minmax(min-content, auto);
+  height: 100%;
+  padding: 0.625em;
+  overflow-x: hidden;
+  transition: background-color .1s;
+  -webkit-overflow-scrolling: touch;
+}
+
+@media (max-width: 600px) {
+  .read-forms {
+    text-align-last: center;
+    margin-bottom: 1vh;
+    text-align: -webkit-center;
+  }
+
+  .title-form {
+    font-size: 30px;
+    font-weight: 700;
+    text-align-last: center;
+  }
+
+  .swal2-container {
+    display: grid;
+    position: fixed;
+    z-index: 1060;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 13% !important;
+    box-sizing: border-box;
+    grid-template-areas:
+      "top-start top top-end"
+      "center-start center center-end"
+      "bottom-start bottom-center bottom-end";
+    grid-template-rows: minmax(-webkit-min-content, auto) minmax(-webkit-min-content, auto) minmax(-webkit-min-content, auto);
+    grid-template-rows: minmax(min-content, auto) minmax(min-content, auto) minmax(min-content, auto);
+    height: 100%;
+    padding: 0.625em;
+    overflow-x: hidden;
+    transition: background-color .1s;
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+/*DetailConstruccion*/
+.detailConst {
+  margin-top: 2% !important;
+  background-color: #e7e7e7;
+  border-radius: 8px;
+  margin-bottom: 1% !important;
+  padding-top: 1% !important;
+}
+
+.css-ahjhu0-MuiPaper-root {
+  background-color: #fff;
+  color: rgba(0, 0, 0, 0.87);
+  -webkit-transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  border-radius: 4px;
+  box-shadow: 0px 2px 1px -1pxrgba(0, 0, 0, 0.2), 0px 1px 1px 0pxrgba(0, 0, 0, 0.14), 0px 1px 3px 0pxrgba(0, 0, 0, 0.12);
+  padding: 16px;
+  margin: auto;
+  max-width: 1500px !important;
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+  background-color: #fff;
+}
+
+.font-sizeDetails {
+  font-size: 18px;
+  font-weight: bolder;
+}
+
+.tables-separation {
+  margin-top: 5vh;
+  background-color: white;
+  border-radius: 15px;
+}
+
+.total-health {
+  margin-top: 2% !important;
+  background-color: #ffffff;
+  border-radius: 8px;
+  padding-top: 1% !important;
+  margin-left: 0px;
+}
+
+.card-titles {
+  background-color: white;
+  border-radius: 5px;
+  margin-top: 2vh;
+  width: 100%;
+  margin-left: 0px;
+  height: 9vh;
+}
+
+/**FORMS*/
+.card-forms {
+  background-color: white;
+  border-radius: 15px;
+  padding: 20px;
+}
+
+.form-check {
+  display: block;
+  min-height: 1.5rem;
+  padding-left: 1rem;
+  margin-bottom: 0.125rem;
+}
+
+.row-styes-clave {
+  padding-top: 5vh !important;
+  padding-bottom: 2vh !important;
+}
+
+.row-styes {
+  padding-bottom: 2vh !important;
+}
+
+textarea {
+  width: 100%;
+  border-color: #cfcfcf;
+}
+
+label {
+  display: inline-block;
+  font-weight: 700;
+}
+
+.centerText {
+  align-self: center !important;
+  margin-top: 3vh;
+}
+
+.css-13dmi8j {
+  margin: auto;
+  display: block;
+  max-width: 100%;
+  max-height: 100%;
+  border-radius: 0px !important;
+  width: 100%;
+}
+
+/*login**/
+.logint-text {
+  font-size: 21px;
+  text-align: CENTER;
+  font-weight: 600;
+}
+
+.background-radial-gradient {
+  position: relative;
+  background-color: #000000b5;
+  height: 100vh;
+}
+
+.background-radial-gradient::before {
+  content: ' ';
+  position: absolute;
+  width: 100%;
+  opacity: 0.5;
+  background: url(https://escapadas.mexicodesconocido.com.mx/wp-content/uploads/2021/03/Zapopan15-1.jpg) no-repeat center center;
+  background-size: cover;
+  height: 100vh;
+}
+
+.contents {
+  text-align: center;
+  color: white;
+  position: relative;
+}
+
+.posicion-romeria {
+  float: center;
+  width: 25%;
+}
+
+.rom-posc {
+  text-align-last: center;
+}
+
+.loginp {
+  font-weight: 700;
+  font-size: x-large;
+  text-align: center;
+}
+
+.login {
+  text-align: center;
+}
+
+.ingresar {
+  color: white;
+  text-decoration: none;
+}
+
+/**MI CUENTA*/
+.myaccoutn-tables {
+  max-height: 30vh;
+  min-height: 30vh;
+}
+
+.background-upband-accoutn {
+  background: linear-gradient(80deg, #959595 30%, #8a919d, #7e8e9d) !important;
+}
+
+.tables-detail {
+  border-color: inherit !important;
+  border-style: solid !important;
+  border-width: 2px;
+  vertical-align: revert !important;
+}
+
+.btn-success {
+  width: 50%;
+}
+
+.btn-succ {
+  justify-content: center;
+  text-align: center;
+}
+
+.css-1glvl0p-MuiButtonBase-root-MuiIconButton-root-MuiAutocomplete-clearIndicator {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  position: relative;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+  background-color: transparent;
+  outline: 0;
+  border: 0;
+  margin: 0;
+  border-radius: 0;
+  padding: 0;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  vertical-align: middle;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  color: inherit;
+  text-align: center;
+  -webkit-flex: 0 0 auto;
+  -ms-flex: 0 0 auto;
+  flex: 0 0 auto;
+  font-size: 1.5rem;
+  padding: 8px;
+  border-radius: 50%;
+  overflow: visible;
+  color: rgba(0, 0, 0, 0.54);
+  -webkit-transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  margin-right: -2px;
+  padding: 4px;
+  visibility: hidden !important;
+}
